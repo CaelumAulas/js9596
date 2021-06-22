@@ -6,6 +6,12 @@ class Form extends Component {
         telefone: ''
     }
 
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+        this.props.addContatoCallback(this.state.nome, this.state.telefone);
+        this.setState({ nome: '', telefone: '' });
+    }
+
     render() {
         const msgNome = !this.state.nome && <span className="d-block text-danger mt-1">Nome é obrigatório!</span>;
         const msgTelefone = !this.state.telefone && <span className="d-block text-danger mt-1">Telefone é obrigatório!</span>;
@@ -13,7 +19,7 @@ class Form extends Component {
 
         return (
             <div class="card mb-3 p-3">
-                <form id="formCadastro" class="row">
+                <form id="formCadastro" class="row" onSubmit={ this.handleFormSubmit }>
 
                     <div class="form-group col-md-5">
                         <label>Nome:</label>
