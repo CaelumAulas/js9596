@@ -1,0 +1,56 @@
+.lista-veiculos h2 {
+    color: #360505;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 21px;
+    font-weight: bold;
+    padding-bottom: 11px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #360505;
+}
+
+.lista-veiculos li {
+    width: 232px;
+    margin-bottom: 20px;
+    color: #7a7a7a;
+}
+
+.lista-veiculos li img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.lista-veiculos li h3 {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+}
+
+.lista-veiculos li p {
+    margin: 10px 0;
+}
+
+@media (max-width: 990px) {
+    .lista-veiculos li {
+        width: 24%;
+    }
+}
+
+@media (max-width: 950px) {
+    .lista-veiculos li {
+        width: 32%;
+    }
+}
+
+@media (max-width: 630px) {
+    .lista-veiculos li {
+        width: 48%;
+    }
+}
+
+@media (max-width: 470px) {
+    .lista-veiculos li {
+        width: 100%;
+    }
+}

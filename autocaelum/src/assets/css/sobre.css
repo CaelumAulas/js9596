@@ -1,0 +1,24 @@
+.foto-concessionaria figcaption {
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    padding: 10px 0;
+    color: black;
+}
+
+.foto-concessionaria {
+    margin: 0 30px 0 0;
+    float: left;
+}
+
+@media (max-width: 750px) {
+    .foto-concessionaria {
+        float: none;
+        width: 100%;
+    }
+
+    .foto-concessionaria img {
+        width: 100%;
+        height: auto;
+    }
+}
