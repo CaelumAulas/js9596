@@ -1,13 +1,14 @@
 import React, { Fragment, useState } from 'react';
-import Cabecalho from './components/Cabecalho'
-import NavMenu from './components/NavMenu'
-import Dashboard from './components/Dashboard'
-import Widget from './components/Widget'
-import TrendsArea from './components/TrendsArea'
-import Tweet from './components/Tweet'
-import FormTweet from './components/FormTweet';
+import { Helmet } from 'react-helmet-async';
+import Cabecalho from '../../components/Cabecalho'
+import NavMenu from '../../components/NavMenu'
+import Dashboard from '../../components/Dashboard'
+import Widget from '../../components/Widget'
+import TrendsArea from '../../components/TrendsArea'
+import Tweet from '../../components/Tweet'
+import FormTweet from '../../components/FormTweet';
 
-function App() {
+function HomePage() {
     const [listaTweets, setListaTweets] = useState([]);
 
     const addTweet = (tweet) => {
@@ -17,6 +18,9 @@ function App() {
 
     return (
       <Fragment>
+        <Helmet>
+             <title>Twittelum ({String(listaTweets.length)})</title>
+        </Helmet> 
         <Cabecalho>
             <NavMenu usuario="@omariosouto" />
         </Cabecalho>
@@ -50,4 +54,4 @@ function App() {
     );
 }
 
-export default App;
+export default HomePage;
