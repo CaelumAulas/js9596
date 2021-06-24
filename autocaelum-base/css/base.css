@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Variáveis em CSS */
+:root {
+   --fundo-vermelho-topo: #4D0B0B;
+   --fundo-menu-rodape: #360505;
+   --cor-texto: #000;
+   --tamanho-texto: 16px;
+   --cor-separador-menu: #693434;
+   --cor-links-destaque: #fff;
+   --fundo-links-destaque: #069E03;
+   --cor-texto-topo: #fff;
+   --cor-texto-rodape: #fff;
+   --cor-links-menu: #fff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: var(--tamanho-texto);
+    color: var(--cor-texto);
+    line-height: 1.5;
+}
+
+main {
+    padding: 45px 0;
+}
+
+main p {
+    margin: 15px 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lnk-destaque {
+    text-decoration: none;
+    color: var(--cor-links-destaque);
+    background-color: var(--fundo-links-destaque);
+    padding: 13px 19px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.lnk-destaque:hover {
+    background-color: #475E46;
+}
+
+.redes-sociais a {
+    color: inherit;
+}
+
+.redes-sociais ul {
+    display: inline-block;
+}
+
+.redes-sociais li {
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 14px;
+}
+
+.cabecalho-pagina {
+    font-size: 36px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 35px;
+    color: black;
+    border-bottom: 1px solid #360505;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

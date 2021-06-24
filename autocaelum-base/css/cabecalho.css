@@ -1,0 +1,181 @@
+#topo {
+    background-color: var(--fundo-vermelho-topo);
+    color: var(--cor-texto-topo);
+}
+
+#topo > .container {
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+#topo form {
+    border: 4px solid #410000;
+    background-color: #F4F4F4;
+    width: 420px;
+}
+
+#topo label {
+    display: none;
+}
+
+#topo input,
+#topo button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+#topo input {
+    padding: 15px;
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#topo button {
+    padding: 0 15px;
+    font-size: 20px;
+    color: #676666;
+}
+
+#topo .lnk-financiamento {
+    padding: 15px 26px;
+    letter-spacing: 0.12em;
+}
+
+#topo .lnk-financiamento i {
+    font-size: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+
+/* Menu do Site */
+#menu {
+    background-color: var(--fundo-menu-rodape);
+    color: var(--cor-links-menu);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 17px 0;
+}
+
+#menu a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+#menu a.active {
+    color: var(--cor-separador-menu);
+}
+
+#menu li {
+    display: inline-block;
+}
+
+#menu .menu-principal li {
+    border-right: 1px solid var(--cor-separador-menu);
+    padding-right: 20px;
+    margin-right: 20px;
+}
+
+#menu li:last-of-type {
+    border-right: none;
+}
+
+.btn-mobile {
+    display: none;
+}
+
+@media (max-width: 880px) {
+    #topo button.btn-mobile {
+        display: block;
+        width: 35px;
+        height: 35px;
+        margin: 0 auto;
+        line-height: 35px;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    #topo .btn-mobile i {
+        color: #fff;
+        font-size: 35px;
+    }
+
+    #menu > .container {
+        display: none;
+        margin-top: 15px;
+    }
+
+    #menu > .container.active {
+        display: flex;
+    }
+
+    #topo img {
+        margin: 0 calc((100% - 126px) / 2) 25px;
+    }
+
+    #topo form,
+    #topo .lnk-financiamento {
+        width: 48%;
+    }
+
+    #topo .lnk-financiamento {
+        text-align: center;
+    }
+}
+
+@media (max-width: 780px) {
+    #menu .flex {
+        flex-direction: column;
+    }
+
+    #menu .menu-principal {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #menu .menu-principal li {
+        width: 100%;
+        text-align: center;
+        display: block;
+        border: none;
+        margin-bottom: 5px;
+    }
+
+    #menu .menu-principal a {
+        border-radius: 5px;
+        padding: 12px 16px;
+        display: block;
+        background-color: #1b0101;
+    }
+}
+
+@media (max-width: 620px) {
+    #topo form {
+        width: 60%;
+    }
+
+    #topo .lnk-financiamento {
+        width: 36%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 510px) {
+    #topo .lnk-financiamento {
+        order: 2;
+        width: 50%;
+    }
+
+    #topo img {
+        margin: 0 auto 25px 0;
+        order: 1;
+    }
+
+    #topo form {
+        width: 100%;
+        order: 3;
+    }
+}

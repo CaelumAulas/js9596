@@ -1,0 +1,46 @@
+.fale-conosco form,
+.fale-conosco iframe {
+    max-width: 488px;
+    width: 49%;
+}
+
+.fale-conosco .campo {
+    margin-bottom: 15px;
+}
+
+.fale-conosco .flex {
+    align-items: flex-start;
+}
+
+.fale-conosco input,
+.fale-conosco textarea {
+    background-color: #EDEDED;
+    padding: 13px 20px;
+    color: #727272;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+}
+
+.fale-conosco textarea {
+    height: 190px;
+}
+
+.fale-conosco iframe {
+    height: 432px;
+}
+
+.fale-conosco .btn {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+@media (max-width: 880px) {
+    .fale-conosco form,
+    .fale-conosco iframe {
+        width: 100%;
+        max-width: 100%;
+    }
+}

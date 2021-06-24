@@ -1,0 +1,105 @@
+.grid-principal {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin-bottom: 45px;
+}
+
+.grid-principal img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.grid-principal figure {
+    grid-area: 1/1/span 2/span 3;
+    position: relative;
+}
+
+.grid-principal figcaption {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    color: #fff;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 37px;
+    font-weight: bold;
+}
+
+.grid-principal figcaption a {
+    color: #CA5858;
+    letter-spacing: 0;
+    text-decoration: none;
+    text-transform: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.grid-principal figcaption a i {
+    margin-left: 5px;
+}
+
+.grid-principal .texto-1,
+.grid-principal .texto-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.grid-principal .texto-1 {
+    background-color: #2D0707;
+}
+
+.grid-principal .texto-2 {
+    background-color: #652626;
+}
+
+@media (max-width: 750px) {
+    .grid-principal {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .grid-principal figure {
+        grid-area: 1/1/2/span 2;
+    }
+}
+
+@media (max-width: 390px) {
+    .grid-principal {
+        grid-template-columns: repeat(2, 49%);
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .grid-principal figcaption {
+        padding: 15px;
+    }
+
+    .grid-principal figure {
+        grid-area: 1/1/2/span 2;
+    }
+
+    .grid-principal .texto-1 {
+        order: 4;
+        font-size: 12px;
+    }
+
+    .grid-principal .texto-2 {
+        order: 5;
+        font-size: 12px;
+    }
+}
