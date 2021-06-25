@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import MasterLayout from '../../components/MasterLayout';
 import VeiculosList from '../../components/VeiculosList';
 import img1 from '../../assets/images/home-imagem-1.jpg';
@@ -19,9 +20,9 @@ export default function HomePage() {
                         <img src={ img1 } alt="Foto da Concessionária" />
                         <figcaption>
                             Conheça a AutoCaelum <br />
-                            <a href="sobre.html">
+                            <Link to="/sobre">
                                 Saiba mais <i className="fas fa-long-arrow-alt-right"></i>
-                            </a>
+                            </Link>
                         </figcaption>
                     </figure>
 
@@ -38,7 +39,7 @@ export default function HomePage() {
                     <img src={ img3 } alt="Foto do pátio da Concessionária 3" />
                 </section>
 
-                <VeiculosList quantidade={4} />
+                <VeiculosList quantidade={4} mostrarTitulo={true} />
             </main>
         </MasterLayout>
     )

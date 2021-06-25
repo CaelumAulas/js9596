@@ -37,6 +37,11 @@
     padding-right: 30px;
 }
 
+.fale-conosco .btn:disabled {
+    opacity: .2;
+    cursor: not-allowed;
+}
+
 @media (max-width: 880px) {
     .fale-conosco form,
     .fale-conosco iframe {

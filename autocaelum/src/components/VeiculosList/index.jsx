@@ -2,7 +2,7 @@ import React from 'react'
 import VeiculoItem from '../VeiculoItem'
 import '../../assets/css/veiculos.css';
 
-export default function VeiculosList({ quantidade }) {
+export default function VeiculosList({ quantidade, mostrarTitulo }) {
     const listaVeiculos = []
     for (let i = 1; i <= quantidade; i++) {
         listaVeiculos.push(
@@ -11,9 +11,9 @@ export default function VeiculosList({ quantidade }) {
     }
 
     return (
-        <section class="container lista-veiculos">
-            <h2>Veículos</h2>
-            <ul class="flex">
+        <section className="container lista-veiculos">
+            { mostrarTitulo && <h2>Veículos</h2> }
+            <ul className="flex">
                 { listaVeiculos }
             </ul>
         </section>
