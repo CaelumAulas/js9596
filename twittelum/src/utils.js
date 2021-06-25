@@ -1,0 +1,1 @@
+export const TWITTELUM_API = 'https://twitelum-api.herokuapp.com';

@@ -17,13 +17,14 @@ import "./assets/css/novoTweet.css";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PrivateRoute from "./routes/PrivateRoute";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
     <HelmetProvider>
         <BrowserRouter>
             <Switch>
-                <Route path="/" component={HomePage} exact />
+                <PrivateRoute path="/" component={HomePage} exact />
                 <Route path="/login" component={LoginPage} />
                 <Route component={NotFoundPage} />
             </Switch>
