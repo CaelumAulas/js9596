@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import MasterLayout from '../../components/MasterLayout';
 import '../../assets/css/fale-conosco.css';
 
 export default function ContatoPage() {
+    const inputNome = useRef();
+    const inputEmail = useRef();
+    const inputTel = useRef();
+    const inputAssunto = useRef();
+    const inputMensagem = useRef();
+
+    const handleContatoSubmit = (e) => {
+        e.preventDefault();
+        let nome = inputNome.current.value.trim();
+        let email = inputEmail.current.value.trim();
+        let tel = inputTel.current.value.trim();
+        let assunto = inputAssunto.current.value.trim();
+        let mensagem = inputMensagem.current.value.trim();
+
+        if (!nome || !email || !assunto || !mensagem) {
+            alert('Por favor, preencha os campos obrigatórios!');
+        }
+        else {
+            alert('Mensagem enviada com sucesso!');
+        }
+    }
+
+
     return (
         <MasterLayout>
             <Helmet>
@@ -15,21 +38,21 @@ export default function ContatoPage() {
                     Para entrar em contato conosco, preencha o formulário abaixo:
                 </p>
                 <div className="flex">
-                    <form>
+                    <form onSubmit={ handleContatoSubmit }>
                         <div className="campo">
-                            <input type="text" placeholder="* Seu nome:" />
+                            <input type="text" ref={inputNome} placeholder="* Seu nome:" />
                         </div>
                         <div className="campo">
-                            <input type="text" placeholder="* Seu e-mail:" />
+                            <input type="text" ref={inputEmail} placeholder="* Seu e-mail:" />
                         </div>
                         <div className="campo">
-                            <input type="text" placeholder="Seu telefone:" />
+                            <input type="text" ref={inputTel} placeholder="Seu telefone:" />
                         </div>
                         <div className="campo">
-                            <input type="text" placeholder="* Assunto da mensagem:" />
+                            <input type="text" ref={inputAssunto} placeholder="* Assunto da mensagem:" />
                         </div>
                         <div className="campo">
-                            <textarea placeholder="* Digite sua mensagem aqui..."></textarea>
+                            <textarea ref={inputMensagem} placeholder="* Digite sua mensagem aqui..."></textarea>
                         </div>
                         <div className="campo">
                             <button className="btn lnk-destaque">
