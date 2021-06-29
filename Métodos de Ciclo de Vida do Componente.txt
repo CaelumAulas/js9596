@@ -1,0 +1,40 @@
+Métodos de Ciclo de Vida do Componente
+
+    componentDidMount() {
+        // método é executado só uma vez (quando o component é criado na tela pela primeira vez)
+    }
+
+    componentDidUpdate() {
+        // é executado quando qualquer valor é atualizado no componente (se o estado muda, ou propriedades dele mudam)
+    }
+
+    componentWillUnmount() {
+        // é executado quando o componente está prestes a ser removido da Interface
+    }
+
+
+/////////////////////////////////////////////
+
+    useEffect(() => {
+
+    }, []); => é equivalente componentDidMount()
+
+
+    useEffect(() => {
+
+    }, [valor1, valor2]) 
+        
+        ou 
+
+    useEffect(() => {
+
+    }); => é equivalente componentDidUpdate()
+
+
+    useEffect(() => {
+
+        return () => {
+            // componentWillUnmount()
+        }
+        
+    }, [])

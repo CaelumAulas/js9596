@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Cabecalho from '../../components/Cabecalho'
 import NavMenu from '../../components/NavMenu'
@@ -7,13 +7,25 @@ import Widget from '../../components/Widget'
 import TrendsArea from '../../components/TrendsArea'
 import Tweet from '../../components/Tweet'
 import FormTweet from '../../components/FormTweet';
+import TweetService from '../../services/TweetService';
+import NotificacaoContext from '../../contexts/NotificacaoContext';
 
 function HomePage() {
     const [listaTweets, setListaTweets] = useState([]);
+    const setNotificacao = useContext(NotificacaoContext);
 
-    const addTweet = (tweet) => {
-        listaTweets.unshift(tweet);
-        setListaTweets([ ...listaTweets ]);
+    useEffect(() => {
+        TweetService.getTweets().then(tweets => setListaTweets(tweets));
+    }, []);
+
+    const addTweet = async (textoTweet) => {
+        try {
+            const tweetAdicionado = await TweetService.addTweet(textoTweet);
+            setListaTweets( [tweetAdicionado, ...listaTweets] );
+        }
+        catch(erro) {
+            setNotificacao(erro.message);
+        }
     }
 
     return (
@@ -37,11 +49,13 @@ function HomePage() {
                 <Widget>
                     <div className="tweetsArea">
                         {
-                            listaTweets.map((tweet, indice) => {
+                            listaTweets.map((tweet) => {
                                 return (
                                     <Tweet 
-                                        key={indice}
-                                        texto={tweet}
+                                        key={tweet._id}
+                                        id={tweet._id}
+                                        conteudo={tweet.conteudo}
+                                        usuario={tweet.usuario}
                                     />
                                 )
                             })
