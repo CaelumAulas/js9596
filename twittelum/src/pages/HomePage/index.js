@@ -28,6 +28,17 @@ function HomePage() {
         }
     }
 
+    const removeTweet = async (id) => {
+        try {
+            await TweetService.deleteTweet(id);
+            const tweetsAtualizados = listaTweets.filter(tweet => tweet._id !== id);
+            setListaTweets(tweetsAtualizados);
+        }
+        catch(erro) {
+            setNotificacao(erro.message);
+        }
+    }
+
     return (
       <Fragment>
         <Helmet>
@@ -56,6 +67,10 @@ function HomePage() {
                                         id={tweet._id}
                                         conteudo={tweet.conteudo}
                                         usuario={tweet.usuario}
+                                        totalLikes={tweet.totalLikes}
+                                        likeado={tweet.likeado}
+                                        removivel={tweet.removivel}
+                                        removeTweetCallback={removeTweet}
                                     />
                                 )
                             })
