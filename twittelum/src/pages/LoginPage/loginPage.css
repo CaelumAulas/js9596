@@ -69,3 +69,11 @@
     width: 100%;
     max-width: 100px;
 }
+
+.login__status {
+    font-size: 12px;
+    color: red;
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 5px;
+}

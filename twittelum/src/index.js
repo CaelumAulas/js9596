@@ -18,18 +18,21 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PrivateRoute from "./routes/PrivateRoute";
+import Notificacao from "./components/Notificacao";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-    <HelmetProvider>
-        <BrowserRouter>
-            <Switch>
-                <PrivateRoute path="/" component={HomePage} exact />
-                <Route path="/login" component={LoginPage} />
-                <Route component={NotFoundPage} />
-            </Switch>
-        </BrowserRouter>
-    </HelmetProvider>
+    <Notificacao>
+        <HelmetProvider>
+            <BrowserRouter>
+                <Switch>
+                    <PrivateRoute path="/" component={HomePage} exact />
+                    <Route path="/login" component={LoginPage} />
+                    <Route component={NotFoundPage} />
+                </Switch>
+            </BrowserRouter>
+        </HelmetProvider>
+    </Notificacao>
 , 
 document.getElementById("root"));
 
