@@ -42,6 +42,13 @@
     cursor: not-allowed;
 }
 
+.fale-conosco .erro {
+    color: red;
+    font-size: 12px;
+    display: inline-block;
+    margin: 5px 0 0 5px;
+}
+
 @media (max-width: 880px) {
     .fale-conosco form,
     .fale-conosco iframe {

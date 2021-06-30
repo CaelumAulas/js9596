@@ -2,8 +2,19 @@ import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import MasterLayout from '../../components/MasterLayout';
 import '../../assets/css/fale-conosco.css';
+import useValidations from '../../hooks/useValidations';
+import useFormValidator from '../../hooks/useFormValidator';
 
 export default function ContatoPage() {
+    const { isEmail, isEmpty, isTelefoneOuCelular } = useValidations();
+    const { erros, isFormValid, validate } = useFormValidator({
+        nome: isEmpty('Nome é obrigatório!'),
+        email: isEmail('E-mail inválido!'),
+        telefone: isTelefoneOuCelular('Telefone inválido!', false),
+        assunto: isEmpty('Assunto é obrigatório!'),
+        mensagem: isEmpty('Mensagem é obrigatória!')
+    });
+
     const inputNome = useRef();
     const inputEmail = useRef();
     const inputTel = useRef();
@@ -40,22 +51,27 @@ export default function ContatoPage() {
                 <div className="flex">
                     <form onSubmit={ handleContatoSubmit }>
                         <div className="campo">
-                            <input type="text" ref={inputNome} placeholder="* Seu nome:" />
+                            <input type="text" ref={inputNome} name="nome" onBlur={validate} placeholder="* Seu nome:" />
+                            {erros.nome && <span className="erro">{erros.nome}</span>}
                         </div>
                         <div className="campo">
-                            <input type="text" ref={inputEmail} placeholder="* Seu e-mail:" />
+                            <input type="text" ref={inputEmail} name="email" onBlur={validate} placeholder="* Seu e-mail:" />
+                            {erros.email && <span className="erro">{erros.email}</span>}
                         </div>
                         <div className="campo">
-                            <input type="text" ref={inputTel} placeholder="Seu telefone:" />
+                            <input type="text" ref={inputTel} name="telefone" onBlur={validate} placeholder="Seu telefone:" />
+                            {erros.telefone && <span className="erro">{erros.telefone}</span>}
                         </div>
                         <div className="campo">
-                            <input type="text" ref={inputAssunto} placeholder="* Assunto da mensagem:" />
+                            <input type="text" ref={inputAssunto} name="assunto" onBlur={validate} placeholder="* Assunto da mensagem:" />
+                            {erros.assunto && <span className="erro">{erros.assunto}</span>}
                         </div>
                         <div className="campo">
-                            <textarea ref={inputMensagem} placeholder="* Digite sua mensagem aqui..."></textarea>
+                            <textarea ref={inputMensagem} name="mensagem" onBlur={validate} placeholder="* Digite sua mensagem aqui..."></textarea>
+                            {erros.mensagem && <span className="erro">{erros.mensagem}</span>}
                         </div>
                         <div className="campo">
-                            <button className="btn lnk-destaque">
+                            <button disabled={!isFormValid} className="btn lnk-destaque">
                                 Enviar
                             </button>
                         </div>
