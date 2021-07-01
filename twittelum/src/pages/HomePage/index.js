@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Cabecalho from '../../components/Cabecalho'
 import NavMenu from '../../components/NavMenu'
@@ -7,37 +7,26 @@ import Widget from '../../components/Widget'
 import TrendsArea from '../../components/TrendsArea'
 import Tweet from '../../components/Tweet'
 import FormTweet from '../../components/FormTweet';
-import TweetService from '../../services/TweetService';
 import NotificacaoContext from '../../contexts/NotificacaoContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { TweetsThunkActions } from '../../store/ducks/tweets';
 
 function HomePage() {
-    const [listaTweets, setListaTweets] = useState([]);
+    const { data: listaTweets, error } = useSelector( state => state.tweets );
+    const dispatch = useDispatch();
     const setNotificacao = useContext(NotificacaoContext);
 
     useEffect(() => {
-        TweetService.getTweets().then(tweets => setListaTweets(tweets));
-    }, []);
 
-    const addTweet = async (textoTweet) => {
-        try {
-            const tweetAdicionado = await TweetService.addTweet(textoTweet);
-            setListaTweets( [tweetAdicionado, ...listaTweets] );
+        setNotificacao(error);
+        if (!error) {
+            dispatch(TweetsThunkActions.loadTweets());
         }
-        catch(erro) {
-            setNotificacao(erro.message);
-        }
-    }
 
-    const removeTweet = async (id) => {
-        try {
-            await TweetService.deleteTweet(id);
-            const tweetsAtualizados = listaTweets.filter(tweet => tweet._id !== id);
-            setListaTweets(tweetsAtualizados);
-        }
-        catch(erro) {
-            setNotificacao(erro.message);
-        }
-    }
+    }, [error]);
+
+    const addTweet = (textoTweet) => dispatch(TweetsThunkActions.addTweet(textoTweet));
+    const removeTweet = (id) => dispatch(TweetsThunkActions.deleteTweet(id));
 
     return (
       <Fragment>

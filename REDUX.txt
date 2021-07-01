@@ -1,0 +1,17 @@
+REDUX
+    É uma biblioteca de gerenciamento de estado para aplicações JavaScript
+    SSOT = Single Source Of Truth
+
+    Aplicações com um Estado (STATE) muito, mas muito grande mesmo.
+
+        Store = centraliza o estado e as informações mais importantes da aplicação
+        Action = Objeto que representa a ação de atualização do estado (e o que muda neste estado dentro da store)
+        Reducer = Função que a partir da action disparada, determina como o estado deve ser atualizado e retorna esse estado
+        Middleware = Funções que ficam no meio de campo entre a ação disparada e sua efetivação no store para realização de operações
+        assíncronas que possam influenciar na maneira como o estado deve ser atualizado pela função Reducer.
+
+            Ex:
+                Redux Thunk (usaremos no curso)
+                Redux Saga
+                Redux Observables
+                ...

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { Provider } from 'react-redux';
 
 // CSSs Globais
 import "./assets/css/reset.css";
@@ -20,19 +21,22 @@ import NotFoundPage from "./pages/NotFoundPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import Notificacao from "./components/Notificacao";
 import * as serviceWorker from "./serviceWorker";
+import store from "./store";
 
 ReactDOM.render(
-    <Notificacao>
-        <HelmetProvider>
-            <BrowserRouter>
-                <Switch>
-                    <PrivateRoute path="/" component={HomePage} exact />
-                    <Route path="/login" component={LoginPage} />
-                    <Route component={NotFoundPage} />
-                </Switch>
-            </BrowserRouter>
-        </HelmetProvider>
-    </Notificacao>
+    <Provider store={ store }>
+        <Notificacao>
+            <HelmetProvider>
+                <BrowserRouter>
+                    <Switch>
+                        <PrivateRoute path="/" component={HomePage} exact />
+                        <Route path="/login" component={LoginPage} />
+                        <Route component={NotFoundPage} />
+                    </Switch>
+                </BrowserRouter>
+            </HelmetProvider>
+        </Notificacao>
+    </Provider>
 , 
 document.getElementById("root"));
 
