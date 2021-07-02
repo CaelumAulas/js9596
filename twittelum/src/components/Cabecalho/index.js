@@ -13,4 +13,4 @@ function Cabecalho( { children } ) {
     )
 }
 
-export default Cabecalho
+export default Cabecalho;

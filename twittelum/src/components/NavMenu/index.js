@@ -28,4 +28,4 @@ export default function NavMenu( { usuario } ) {
         </ul>
       </nav>
     );
-}
+};

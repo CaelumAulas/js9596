@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Cabecalho from '../../components/Cabecalho'
 import NavMenu from '../../components/NavMenu'
@@ -25,8 +25,11 @@ function HomePage() {
 
     }, [error]);
 
-    const addTweet = (textoTweet) => dispatch(TweetsThunkActions.addTweet(textoTweet));
-    const removeTweet = (id) => dispatch(TweetsThunkActions.deleteTweet(id));
+    const addTweet = useCallback((textoTweet) => dispatch(TweetsThunkActions.addTweet(textoTweet)), []);
+    
+    const removeTweet = useCallback((id) => {
+        dispatch(TweetsThunkActions.deleteTweet(id));
+    }, []);
 
     return (
       <Fragment>

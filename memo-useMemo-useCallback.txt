@@ -1,0 +1,18 @@
+# memo (Função utilitária)
+    Uma função utilitária que cria meio que um cache do Componente (Component memoizing)
+    1. Componentes Puros
+    2. Componentes que renderizam muito
+    3. Componentes que renderizam com as mesmas propriedades
+    4. Componentes de Tamanho Médio/Grande
+
+# useMemo (hook)
+    1. Retornar um valor oriundo de uma lógica de cálculo difícil de ser obtida
+
+        const valor = useMemo(() => {
+
+        }, [numero]);   
+
+        numero = valor;
+
+# useCallback (hook)
+    1. Retorna uma função cacheada (memoizada) que deve ser utilizada geralmente pelos componentes filhos
