@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export default function VeiculoItem({ foto, id, modelo, preco }) {
     return (
         <li>
-            <img src="https://via.placeholder.com/232x129" alt="Chevrolet Cruze" />
-            <h3>Chevrolet Cruze LT 2012 Flex (Aut.)</h3>
+            <img src={ foto } alt={ modelo } />
+            <h3>{ modelo }</h3>
             <p>
-                R$ 35.500,00
+                { preco }
             </p>
             <Link to="/veiculos" className="lnk-destaque">
                 Ver Detalhes

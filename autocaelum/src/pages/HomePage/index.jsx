@@ -39,7 +39,7 @@ export default function HomePage() {
                     <img src={ img3 } alt="Foto do pátio da Concessionária 3" />
                 </section>
 
-                <VeiculosList quantidade={4} mostrarTitulo={true} />
+                <VeiculosList quantidade={4} mostrarTitulo={true} randomico={true} />
             </main>
         </MasterLayout>
     )
