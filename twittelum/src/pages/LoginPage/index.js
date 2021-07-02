@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useHistory } from 'react-router-dom';
 import Cabecalho from '../../components/Cabecalho'
@@ -8,11 +8,15 @@ import LoginService from '../../services/LoginService';
 import NotificacaoContext from '../../contexts/NotificacaoContext';
 import useValidations from '../../hooks/useValidations';
 import useFormValidator from '../../hooks/useFormValidator';
+import { useDispatch, useSelector } from 'react-redux';
+import { AuthThunkActions } from '../../store/ducks/auth';
 
 function LoginPage() {
     const inputLogin = useRef();
     const inputSenha = useRef();
     const history = useHistory();
+    const authState = useSelector( state => state.auth );
+    const dispatch = useDispatch();
     const setNotificacao = useContext(NotificacaoContext);
     const { isEmpty } = useValidations();
     const { erros, isFormValid, validate } = useFormValidator({
@@ -20,20 +24,24 @@ function LoginPage() {
         senha: isEmpty('Senha é obrigatória!')
     });
 
+    useEffect(() => {
+
+        if (authState.error) {
+            setNotificacao(authState.error);
+        }
+        else if (authState.status === 'LOGGED_IN') {
+            console.log('Teste');
+            setNotificacao('Login realizado com sucesso!');
+            history.push('/');
+        }
+
+    }, [authState.error, authState.status]);
+
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         let login = inputLogin.current.value.trim();
         let senha = inputSenha.current.value.trim();
-
-        try 
-        {
-            await LoginService.autenticar(login, senha);
-            setNotificacao('Login realizado com sucesso!');
-            history.push('/');
-        }
-        catch(erro) {
-            setNotificacao(erro.message);
-        }
+        dispatch(AuthThunkActions.login(login, senha));
     }
 
     return (

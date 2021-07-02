@@ -24,7 +24,7 @@ export default class LoginService {
             throw new Error('TOKEN não encontrado!');
         }
 
-        localStorage.setItem('TOKEN', token);
+        return token;
     }
 
 }

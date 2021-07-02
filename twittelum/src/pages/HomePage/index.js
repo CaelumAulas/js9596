@@ -18,7 +18,9 @@ function HomePage() {
 
     useEffect(() => {
 
-        setNotificacao(error);
+        if (error) {
+            setNotificacao(error);
+        }
         if (!error) {
             dispatch(TweetsThunkActions.loadTweets());
         }
